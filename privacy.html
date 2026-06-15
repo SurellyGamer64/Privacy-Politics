@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad — Androide del PVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0c10;
+      --surface:   #111318;
+      --border:    #1e2330;
+      --accent:    #57f287;
+      --accent2:   #5865f2;
+      --glow:      rgba(87,242,135,0.15);
+      --text:      #c8cdd8;
+      --text-dim:  #5c6378;
+      --heading:   #e8eaf0;
+      --mono:      'Share Tech Mono', monospace;
+      --sans:      'Exo 2', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(87,242,135,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87,242,135,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+      animation: scan 7s linear infinite;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 999;
+    }
+    @keyframes scan { to { top: 110%; } }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 64px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      background: rgba(87,242,135,0.06);
+    }
+    .badge::before { content: '🔒'; font-size: 10px; }
+
+    h1 {
+      font-family: var(--sans);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    h1 span {
+      display: block;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+    .meta span { color: var(--accent); }
+
+    .intro {
+      margin-top: 20px;
+      font-size: 15px;
+      color: var(--text);
+      max-width: 620px;
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+    }
+
+    /* ── DATA CHIP ── */
+    .data-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--accent);
+      background: rgba(87,242,135,0.05);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 48px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    section:hover { border-color: rgba(87,242,135,0.3); }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    section:hover::before { opacity: 1; }
+
+    .sec-number {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      opacity: 0.7;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    p { margin-bottom: 12px; font-size: 14.5px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      margin: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    ul li {
+      font-size: 14px;
+      padding-left: 20px;
+      position: relative;
+      color: var(--text);
+    }
+    ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── STATUS BLOCK ── */
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(87,242,135,0.05);
+      border: 1px solid rgba(87,242,135,0.15);
+      border-radius: 4px;
+      padding: 12px 16px;
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .contact-item {
+      background: rgba(87,242,135,0.05);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .contact-item .label {
+      color: var(--text-dim);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .contact-item .value { color: var(--accent); }
+    .contact-item a { color: var(--accent); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* ── DEV NOTE ── */
+    .dev-note-block {
+      background: linear-gradient(135deg, rgba(87,242,135,0.06), rgba(88,101,242,0.06));
+      border: 1px solid rgba(87,242,135,0.2);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+    .dev-note-block .dn-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .dev-note-block p {
+      font-size: 14.5px;
+    }
+
+    /* ── EASTER EGG ── */
+    .scroll-bait {
+      margin-top: 80px;
+      text-align: center;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      font-size: 11px;
+      margin-bottom: 32px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .scroll-msg {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 2.4;
+    }
+    .scroll-msg .highlight {
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 80px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--accent2); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      section { padding: 20px; }
+      .data-chips { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="badge">Política de privacidad</div>
+    <h1>Política de<br><span>Privacidad</span></h1>
+    <p class="meta">ANDROIDE DEL PVP · <span>v1.0</span> · Última actualización: 15/06/2026</p>
+    <p class="intro">Esta política explica qué información puede recopilar esta aplicación, cómo se utiliza y cómo se protege. Al utilizarla, aceptas esta Política de Privacidad.</p>
+  </header>
+
+  <section>
+    <div class="sec-number">// 01</div>
+    <h2>Información Recopilada</h2>
+    <p>Para permitir el funcionamiento del juego, esta aplicación puede almacenar la siguiente información:</p>
+    <div class="data-chips">
+      <span class="chip">ID de usuario</span>
+      <span class="chip">Nombre visible</span>
+      <span class="chip">Progreso</span>
+      <span class="chip">Inventario</span>
+      <span class="chip">Figuras</span>
+      <span class="chip">Estadísticas</span>
+      <span class="chip">Nivel</span>
+      <span class="chip">Monedas virtuales</span>
+      <span class="chip">Config. del juego</span>
+    </div>
+    <p>No se recopilan datos innecesarios fuera del funcionamiento normal del servicio.</p>
+  </section>
+
+  <section>
+    <div class="sec-number">// 02</div>
+    <h2>Uso de la Información</h2>
+    <p>La información almacenada se utiliza únicamente para:</p>
+    <ul>
+      <li>Guardar progreso y gestionar inventarios</li>
+      <li>Mostrar estadísticas del juego</li>
+      <li>Mantener las funciones e interacciones del bot</li>
+      <li>Mejorar la experiencia del usuario</li>
+      <li>Corregir errores y problemas técnicos</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-number">// 03</div>
+    <h2>Compartición de Información</h2>
+    <p>La información almacenada <strong>no se vende ni se comparte con terceros</strong>. Solo podrá utilizarse cuando sea necesario para el funcionamiento técnico del servicio.</p>
+    <div class="status-row">
+      <div class="status-dot"></div>
+      Tus datos permanecen dentro del sistema. Sin publicidad. Sin venta de datos.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-number">// 04</div>
+    <h2>Seguridad de los Datos</h2>
+    <p>Se realizan esfuerzos razonables para proteger la información almacenada. 🗣🔥</p>
+    <p>Sin embargo:</p>
+    <ul>
+      <li>Ningún sistema es completamente inmune a errores.</li>
+      <li>No se garantiza protección absoluta contra pérdidas inesperadas.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-number">// 05</div>
+    <h2>Conservación de Datos</h2>
+    <p>Los datos pueden mantenerse mientras el servicio exista o mientras sean necesarios para el funcionamiento del juego. Algunas actualizaciones podrían modificar, reiniciar o eliminar datos cuando sea necesario.</p>
+  </section>
+
+  <section>
+    <div class="sec-number">// 06</div>
+    <h2>Derechos del Usuario</h2>
+    <p>Los usuarios pueden solicitar:</p>
+    <ul>
+      <li>Información general sobre los datos almacenados</li>
+      <li>Corrección de errores relacionados con sus datos</li>
+      <li>Eliminación de información cuando sea técnicamente posible</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-number">// 07</div>
+    <h2>Cambios en esta Política</h2>
+    <p>Esta Política de Privacidad puede actualizarse para reflejar cambios técnicos o mejoras del servicio. La fecha de actualización indicará la versión más reciente.</p>
+  </section>
+
+  <section>
+    <div class="sec-number">// 08</div>
+    <h2>Contacto</h2>
+    <p>Para consultas relacionadas con privacidad:</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="label">Discord</div>
+        <div class="value">matheogamer64</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Correo</div>
+        <div class="value"><a href="mailto:SurellyGamer64@gmail.com">SurellyGamer64@gmail.com</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="dev-note-block">
+    <div class="dn-label">// Nota del desarrollador</div>
+    <p>Este proyecto fue creado con intención de entretenimiento. No soy una empresa ni nada por el estilo, tampoco soy comerciante de figuras XD</p>
+    <p style="margin-top:10px;">Solo intento mantener funcionando un bot con figuras, caos y demasiadas ideas. Gracias por confiar en el proyecto 😎</p>
+  </div>
+
+  <!-- ═══════════ EASTER EGG ═══════════ -->
+  <div class="scroll-bait">
+    <div class="divider">— Fin de la política —</div>
+    <div class="scroll-msg">
+      Si llegaste hasta aquí…<br><br>
+      <span class="highlight">¡Felicidades! 🎉</span><br><br>
+      Ahora sabes más del sistema<br>
+      que algunos enemigos de mi bot.
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Androide del PVP</span>
+    <a href="tos.html">← Términos de Servicio</a>
+  </footer>
+
+</div>
+</body>
+</html>
